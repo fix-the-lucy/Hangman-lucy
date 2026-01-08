@@ -2,10 +2,9 @@
 
 A classic, interactive Hangman game built with simplicity and fun in mind. Test your vocabulary and save the character from their fate by guessing the hidden word one letter at a time!
 
-![License](https://img.shields.io/github/license/fix-the-lucy/Hangman-lucy)
-![Issues](https://img.shields.io/github/issues/fix-the-lucy/Hangman-lucy)
-![Stars](https://img.shields.io/github/stars/fix-the-lucy/Hangman-lucy)
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub forks](https://img.shields.io/github/forks/fix-the-lucy/Hangman-lucy?style=flat-square)](https://github.com/fix-the-lucy/Hangman-lucy/network)
+[![GitHub issues](https://img.shields.io/github/issues/fix-the-lucy/Hangman-lucy?style=flat-square)](https://github.com/fix-the-lucy/Hangman-lucy/issues)
 ---
 
 ## ✨ Features
