@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hangman Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background: radial-gradient(circle at top, #0f2027, #203a43, #000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.card{
+    width:380px;
+    max-width:95%;
+    padding:30px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    box-shadow:0 0 40px rgba(0,0,0,.7);
+    animation: pop .5s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(.9);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+h1,h2{
+    margin:10px 0;
+}
+
+.menu button{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    color:white;
+    transition:.25s;
+}
+
+.menu button:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 15px #00c6ff;
+}
+
+.word{
+    letter-spacing:12px;
+    font-size:32px;
+    margin:20px 0;
+}
+
+input{
+    width:70px;
+    height:60px;
+    text-align:center;
+    font-size:28px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+}
+
+.guess-btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    background: linear-gradient(135deg,#ff512f,#dd2476);
+    color:white;
+}
+
+.msg{
+    margin:10px;
+    min-height:22px;
+    color:#ffcc00;
+}
+
+.success{ color:#00ff9c; }
+.danger{ color:#ff4b4b; }
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    opacity:.85;
+}
+
+.reset-btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    background: linear-gradient(135deg,#00ff9c,#00c896);
+    color:#003;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+{% if page == "menu" %}
+    <h1>🎮 Hangman</h1>
+    <p>Select a Category</p>
+
+    <form method="post" class="menu">
+        <button name="category" value="Tech">🖥️ Tech</button>
+        <button name="category" value="Animal">🐾 Animal</button>
+        <button name="category" value="Fruit">🍎 Fruit</button>
+        <button name="category" value="Country">🌍 Country</button>
+    </form>
+
+{% elif page == "game" %}
+
+    <div class="top">
+        <div>📚 {{ category }}</div>
+        <div>❤️ {{ attempts }}</div>
+    </div>
+
+    <div class="word">{{ display }}</div>
+
+    <div style="font-size:13px;opacity:.8">Guessed: {{ guessed|join(", ") }}</div>
+
+    <div class="msg">{{ message }}</div>
+
+    {% if win %}
+        <h2 class="success">🎉 You Won!</h2>
+        <p>The word was: <b>{{ word }}</b></p>
+        <a href="/reset"><button class="reset-btn">Play Again</button></a>
+
+    {% elif lose %}
+        <h2 class="danger">💀 Game Over</h2>
+        <p>The word was: <b>{{ word }}</b></p>
+        <a href="/reset"><button class="reset-btn">Try Again</button></a>
+
+    {% else %}
+        <form method="post" onsubmit="return focusInput()">
+            <input type="text" name="guess" maxlength="1" required autofocus id="guessInput">
+            <button class="guess-btn">Guess</button>
+        </form>
+    {% endif %}
+
+{% endif %}
+
+</div>
+
+<script>
+function focusInput(){
+    setTimeout(()=>{
+        let i=document.getElementById("guessInput");
+        if(i) i.value="";
+    },50);
+    return true;
+}
+</script>
+
+</body>
+</html>
