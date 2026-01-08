@@ -8,18 +8,6 @@ A classic, interactive Hangman game built with simplicity and fun in mind. Test 
 
 ---
 
-## 📖 Table of Contents
-- [Features](#-features)
-- [Demo](#-demo)
-- [Prerequisites & Requirements](#-prerequisites--requirements)
-- [Installation](#-installation)
-- [How to Play](#-how-to-play)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
 ## ✨ Features
 - **Dynamic Word Selection:** Randomly pulls words from a pre-defined list or API.
 - **Lives System:** Visual representation of the hangman as you lose lives.
